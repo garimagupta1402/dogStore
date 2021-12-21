@@ -1,0 +1,1 @@
+export const DOG_BREED = "DOG_BREED";
