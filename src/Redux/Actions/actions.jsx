@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DOG_BREED } from "./actionNames";
+import { DOG_BREED_FAILURE , DOG_BREED_SUCCESS } from "./actionNames";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -7,12 +7,14 @@ import {
 import { auth } from "../../Firebase/firebase";
 
 export const dogApi = (breed) => {
+  console.log('api Working');
   return async (dispatch) => {
+
     const response = await axios.get(
       `https://dog.ceo/api/breed/${breed}/images/random`
     );
-    dispatch(DOG_BREED(response.data.data));
-    dispatch({ type: DOG_BREED, payLoad: breed });
+   console.log(response, 'response');
+    dispatch({ type: DOG_BREED_SUCCESS, payload: response.data.message });
   };
 };
 
@@ -28,7 +30,6 @@ export const Register = (values) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
     });
 };
 

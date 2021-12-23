@@ -7,7 +7,8 @@ import SignUp from "./SignUp/index";
 import About from "./About";
 import FAQ from "./FAQ";
 import Breeds from './Breeds/index'
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router } from "react-router-dom"
+import FavBreed from "./favBreed";
 
 function Main() {
   return (
@@ -21,6 +22,7 @@ function Main() {
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/favbreed" element={<FavBreed/>}/>
       </Routes>
     </Router>
   );

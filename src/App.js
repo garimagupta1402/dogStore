@@ -1,12 +1,12 @@
 import Main from "./Screens/index";
-// import Login from "./Screens/Login/demo copy.js";
-import './App.css'
+import { Provider } from "react-redux";
+import { store } from "./store";
+import "./App.css";
 function App() {
   return (
-  <>
+    <Provider store={store}>
       <Main />
-      {/* <Login/> */}
-    </>
+    </Provider>
   );
 }
 

@@ -3,8 +3,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Schema from "./Schema";
 import { createStyles, Button, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { SignIn }from '../../Redux/Actions/actions'
-import { useNavigate } from "react-router";
+import { SignIn } from "../../Redux/Actions/actions";
+import { useNavigate } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -48,15 +49,15 @@ const initialValues = {
   password: "",
 };
 
-export default function Login() {
+export default function Login(props) {
   const classes = useStyles();
-  const Navigate= useNavigate();
+  const Navigate = useNavigate();
   const onSubmit = (values) => {
     console.log("Submitted", values);
     const res = SignIn(values);
-    console.log(res, 'value');
+    console.log(res, "value");
+    console.log(props.history.location, "location");
     // Navigate('/')
-  
   };
 
   return (

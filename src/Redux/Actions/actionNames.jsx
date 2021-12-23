@@ -1,1 +1,2 @@
-export const DOG_BREED = "DOG_BREED";
+export const DOG_BREED_SUCCESS = "DOG_BREED_SUCCESS";
+export const DOG_BREED_FAILURE = "DOG_BREED_FAILURE"

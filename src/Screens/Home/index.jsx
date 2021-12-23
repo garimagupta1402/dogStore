@@ -5,8 +5,8 @@ import { Grid, Typography, TextField, Autocomplete } from "@mui/material";
 import HomeSkeleton from "./homeSkeleton";
 import { dogApi } from "../../Redux/Actions/actions";
 import debounce from "lodash.debounce";
-import {Dogstore} from "../../Redux/Actions/actions"
-
+import { Dogstore } from "../../Redux/Actions/actions";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
   mainDiv: {
@@ -37,7 +37,7 @@ const searchApi = "https://dog.ceo/api/breeds/list/all";
 
 const getApi = "https://dog.ceo/api/breeds/image/random";
 function Home() {
-
+  const navigate = useNavigate();
   const classes = useStyles();
   const [img, setImage] = useState(null);
   const [data, setData] = useState([]);
@@ -90,22 +90,23 @@ function Home() {
                     className={classes.text}
                     {...params}
                     label="Search input"
-                    
-                    InputProps={{ 
+                    InputProps={{
                       onChange: { debouncedChangeHandler },
                       ...params.InputProps,
                       type: "search",
                       onSelect: (e) => {
                         setValue(e.target.value);
-                         // console.log(value.setValue);
-                        // console.log(e.target.value);
+                      },
+                      onBlur: (e) => {
+                        console.log("change");
+                        navigate("/favbreed", { state: value });
                       },
                       //  onClick:(e)=> {
                       //    dispatch:({
                       //       type: Redux.Action.action,
                       //       payload: breed,
-                      //    })
-                      //  }                    
+                      //     })
+                      //  }
                     }}
                   />
                 );
